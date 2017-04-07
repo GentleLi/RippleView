@@ -68,7 +68,7 @@ public class RippleView extends Button {
         mDensity = getContext().getResources().getDisplayMetrics().density;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setAlpha(100);
-        setRippleColor(Color.WHITE, 0.2f);
+        setRippleColor(Color.YELLOW, 0.2f);
     }
 
     private Path mPath = new Path();
@@ -187,8 +187,6 @@ public class RippleView extends Button {
                 setRadius(dp(50));
             }
             if (!superResult) {
-
-
                 return true;
             }
         } else if (event.getActionMasked() == MotionEvent.ACTION_UP

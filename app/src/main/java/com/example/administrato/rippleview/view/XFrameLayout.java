@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
@@ -12,22 +13,22 @@ import android.widget.Scroller;
  * Created by 李建涛 on 2016/11/9.
  */
 
-public class ScrollerLayout extends LinearLayout {
+public class XFrameLayout extends FrameLayout {
 
     private Context mContext;
     private Scroller mScroller;
     private int mLastX;
     private int mLastY;
 
-    public ScrollerLayout(Context context) {
+    public XFrameLayout(Context context) {
         this(context,null);
     }
 
-    public ScrollerLayout(Context context, AttributeSet attrs) {
+    public XFrameLayout(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public ScrollerLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public XFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext=context;
         init();
@@ -62,7 +63,7 @@ public class ScrollerLayout extends LinearLayout {
                 return true;
             case MotionEvent.ACTION_UP:
                 mScroller.startScroll(getScrollX(),getScrollY(),-getScrollX(),-getScrollY(),1000);
-                postInvalidate();
+                invalidate();
                 return true;
         }
         return super.onTouchEvent(event);
@@ -72,7 +73,7 @@ public class ScrollerLayout extends LinearLayout {
     public void computeScroll() {
             if (mScroller.computeScrollOffset()){
                 scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
-                postInvalidate();
+                invalidate();
             }
     }
 }
